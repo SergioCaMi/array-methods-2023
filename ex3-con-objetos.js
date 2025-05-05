@@ -296,21 +296,77 @@ const flightReservations = [
 ];
 
 // Usa el método forEach para iterar por cada uno de los vuelos y mostrarlos por consola
+console.log("\nDatos del vuelo");
+flightReservations.forEach(e => {
+  console.log(`El vuelo ${e.flightNumber} de la aerolínea ${e.airline} saldrá desde el aeropuerto ${e.departure.airport} el día ${e.departure.date} a las ${e.departure.time}`);
+});
+
+
+
+// flightNumber: "QF123",
+// airline: "Qantas",
+// departure: {
+//   airport: "SYD Airport",
+//   date: "2023-11-07",
+//   time: "12:15 PM",
+//   }
+
 
 // Usa el método forEach para mostrar UNICAMENTE el pasajero de cada uno de lo vuelos
+console.log("\nDatos del pasajero");
+flightReservations.forEach(e => {
+  console.log(`El pasajero es ${e.passenger.firstName} ${e.passenger.lastName} con pasaporte ${e.passenger.passport}. Para contactar, escribir al email ${e.passenger.contactInfo.email} o llamar al telefono ${e.passenger.contactInfo.phone}.`);
+});
+
+// passenger: {
+//   firstName: "Emily",
+//   lastName: "Anderson",
+//   passport: "MN123456",
+//   contactInfo: {
+//     email: "emily.anderson@example.com",
+//     phone: "+1 (789) 012-3456",
+//   }
 
 // USa el método find para encontrar el vuelo número 'AA456'. Luego, muestra por consola el precio total de este vuelo
+console.log("\nDatos del vuelo AA456");
+console.log(`El vuelo AA456 tiene un coste total de ${flightReservations.find(e=>e.flightNumber=="AA456").totalPrice}`);
 
 // Usa el método find para encontrar el vuelo que ha reservado el señor bob.johnson@example.com. Muestra el objeto entero
 
+console.log("\nDatos del vuelo de bob.johnson@example.com");
+console.log(`Este es el vuelo que cogerá bob.johnson@example.com:\n ${JSON.stringify(flightReservations.find(e=>e.passenger.contactInfo.email === 'bob.johnson@example.com'))}`);
+
 // Usa el método some para averiguar si algún vuelo tiene como destino el aeropuerto de LPA GRAN CANARIA
+
+console.log("\nVuelos al aeropuerto de LPA GRAN CANARIA");
+console.log(`Hay algún vuelo con destino al aeropuerto de LPA GRAN CANARIA? ${flightReservations.some(e=> e.departure.airport == "LPA GRAN CANARIA")}`);
 
 // Usa el método every para comprobar si todos los vuelos están confirmados (isConfirmed)
 
+console.log("\nVuelos confirmados");
+console.log(`Están todos los vuelos confirmados? ${flightReservations.every(e=> e.isConfirmed == true)}`);
+
 // Usa el método filter para obtener todos los vuelos que tienen la puerta de embarque 'D5'
+
+console.log("\nPuerta de embarque D5");
+console.log(`Estos vuelos embarcan en la puerta de embarque D5:`);
+flightReservations.filter(e => e.gate === "D5").forEach(e => console.log(e.flightNumber));
 
 // Usa el método filter para obtener todos los vuelos que incluyen menús con comida Vegan. BONUS: Muestra por consola el nombre de la aerolínea
 
+console.log("\nVuelos con Menús Veganos");
+flightReservations.filter(e => e.specialMeals.includes("Vegan")).forEach(e => console.log(`El vuelo ${e.flightNumber} de la aerolínea ${e.airline} incluye menú vegano.`));
+
 // Usa el método map para convertir cada objeto en un string con el formato 'numero de vuelo'-'compañía area'´Ejemplo : "AA456-American Airlines"
+
+console.log("\nVuelos con formato");
+const formatFlight = flightReservations.map(e=>{
+  return `${e.flightNumber}-${e.airline}`;
+});
+formatFlight.forEach(e => {
+  console.log(e);
+});
+
+
 
 // DIFICIL. USA el método reduce para sumar el conjunto total de puntos obtenidos de loyalyProgram de todos los tickets
