@@ -51,4 +51,4 @@ console.log(`Qué alumnos contienen en su nombre la letra "i"? ${studentsI}.`);
 
 console.log("Ejercicio 7");
 const initials = students.map(e=>e[0])
-console.log(`Iniciales de los alumno:? ${initials}.`);
+console.log(`Iniciales de los alumnos: ${initials}.`);
