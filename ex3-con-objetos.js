@@ -368,5 +368,12 @@ formatFlight.forEach(e => {
 });
 
 
-
 // DIFICIL. USA el método reduce para sumar el conjunto total de puntos obtenidos de loyalyProgram de todos los tickets
+
+console.log("\nTotal de puntos de loyaltyProgram");
+
+const totalLoyaltyPoints = flightReservations.reduce((acumulateloyalyProgram, e) => {
+  return acumulateloyalyProgram + e.loyaltyProgram.points;
+}, 0);
+
+console.log(`El total de puntos acumulados en estos vuelos es de ${totalLoyaltyPoints} puntos.`);
