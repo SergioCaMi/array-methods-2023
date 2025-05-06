@@ -9,8 +9,8 @@
  */
 
 function countWins(winnerList, country) {
-    // your awesome code here
-}
+    return `${country} ha ganado ${(winnerList.filter(e=> e.country == country).length)} champions.`;
+      }
 
 const winnerList1 = [
     { season: '1996-97', team: 'Borussia Dortmund', country: 'Germany' },
